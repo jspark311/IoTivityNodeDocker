@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd /root/iotivity
+scons liboctbstack
+
+export OCTBSTACK_CFLAGS="-I/root/iotivity/resource/csdk/stack/include -I/root/iotivity/resource/include -I/root/iotivity/resource/oc_logger/include -I/root/iotivity/resource/c_common"
+
+export OCTBSTACK_LIBS="-loctbstack -L/root/iotivity/out/linux/x86_64/release -rpath=/root/iotivity/out/linux/x86_64/release"
+
+npm install -g node-iotivity
+

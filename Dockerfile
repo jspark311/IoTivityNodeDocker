@@ -26,5 +26,5 @@ WORKDIR /root
 RUN /root/NIBuildscript
 
 EXPOSE 22
-EXPOSE 5683
+EXPOSE 5683/udp
 CMD ["/usr/sbin/sshd", "-D"]

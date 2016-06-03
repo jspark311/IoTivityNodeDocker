@@ -1,6 +1,10 @@
-FROM iotivity_base 
+FROM iotivity_base
 RUN apt-get -y update
 RUN apt-get install -y curl openssh-server
+
+# Fix for ssh errors?
+RUN mkdir /var/run/sshd
+RUN rm -rf /etc/ssh/sshd_host_not_to_run
 
 # Thanks, docker...
 # https://docs.docker.com/engine/examples/running_ssh_service/
@@ -15,13 +19,13 @@ RUN apt-get install -y nodejs
 
 RUN npm install -g node-red coap-cbor-cli
 
-ADD Buildscript /root/NIBuildscript
+COPY Buildscript /root/NIBuildscript
 RUN chmod +x /root/NIBuildscript
 
 WORKDIR /root
 RUN /root/NIBuildscript
 
+
 EXPOSE 22
 EXPOSE 5683
 CMD ["/usr/sbin/sshd", "-D"]
-

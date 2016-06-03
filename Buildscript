@@ -7,5 +7,7 @@ export OCTBSTACK_CFLAGS="-I/root/iotivity/resource/csdk/stack/include -I/root/io
 
 export OCTBSTACK_LIBS="-loctbstack -L/root/iotivity/out/linux/x86_64/release -rpath=/root/iotivity/out/linux/x86_64/release"
 
-npm install -g node-iotivity
-
+cd /root
+git clone https://github.com/iotivity/iotivity-node.git
+cd iotivity-node
+npm install --unsafe-perm
